@@ -1,3 +1,5 @@
 <div layout:decorator="layouts/default" layout:fragment="content">
-	<h1 th:text="#{greeting}">Work in progress</h1>
+	<h2 th:text="#{welcome.title}"><strong></strong></h2>
+    <p th:text="#{welcome.message}" class="lead"></p>
+    <p><a th:text="#{welcome.contact}" class="btn btn-primary" href="/contact"></a></p>    
 </div>

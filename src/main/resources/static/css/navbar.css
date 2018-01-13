@@ -1,0 +1,78 @@
+#custom-bootstrap-menu.navbar-default .navbar-brand {
+    color: #aaa;
+    padding-top: 5px;
+    margin-right: 25px;
+}
+#custom-bootstrap-menu.navbar-default {
+    font-size: normal;
+    background-color: #19375a;
+    border:none;
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
+    color: #aaa;
+    text-transform: uppercase;
+}
+#custom-bootstrap-menu.navbar-default .navbar-brand:hover,
+#custom-bootstrap-menu.navbar-default .navbar-brand:focus,
+#custom-bootstrap-menu.navbar-default .navbar-brand.active,
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus,
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a.active {
+    color: white;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle {
+    border-color: steelblue;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
+    background-color: steelblue;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: white;
+}
+
+.navbar-collapse{
+	border-top:none;
+	boder:none;
+	box-shadow:none;
+}
+
+@media only screen and (min-width:960px){
+	.navbar-left:before {
+	  content: '';
+	  position: absolute;
+	  top: 0;
+	  left: 199px;
+	  border-top: 51px solid #152f4d;
+	  border-left: 51px solid #19375a;
+	  width: 405px;
+	}
+	.navbar-left:after {
+	  content: '';
+	  position: absolute;
+	  top: 0;
+	  left: 604px;	/* 199 + 320 */
+	  border-top: 51px solid #152f4d;
+	  border-right: 51px solid #19375a;
+	  width: 50px;
+	}
+	#custom-bootstrap-menu.navbar-default .navbar-nav.navbar-left>li {
+     background-color: #152f4d;
+	}
+}
+
+.divider-vertical {
+	height: 30px;
+	border: 1px solid rgba(119, 119, 119, 1);
+	margin: 10px 25px;
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a.lang.active {
+	margin-bottom: -5px;
+	padding-bottom: 10px;
+	border-bottom: 5px solid steelblue;
+}

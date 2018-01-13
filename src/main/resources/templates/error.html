@@ -1,0 +1,9 @@
+<div layout:decorator="layouts/default" layout:fragment="content" th:with="currentPage='error'" >
+  	<h2>
+	   <span class="glyphicon glyphicon glyphicon-warning-sign red" aria-hidden="true"></span>
+	    <span th:text="#{error.msg}" >Subtitle</span>
+	</h2>
+    <span class="errorCode" th:text="${status}"></span>
+    &nbsp;
+    <span class="errorMsg" th:text="${error}"></span>
+</div>

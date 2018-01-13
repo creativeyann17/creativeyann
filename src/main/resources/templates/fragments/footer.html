@@ -1,3 +1,11 @@
-<div th:fragment='footer'>
+
+<div id="footer" th:fragment='footer'>
+	 <p th:text="#{footer.copyright}"></p>
+	
+	<script>
+	   var p = $("#footer p").text();
+	   p = p.replace("{0}", new Date().getFullYear());
+	   $("#footer p").text(p);
+	</script>
 
 </div>
