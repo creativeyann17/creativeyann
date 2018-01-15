@@ -11,8 +11,8 @@ html, body{
 
 #footer{
 	 text-transform: uppercase;
-	height: 40px;
-	padding: 15px;
+	height: 50px;
+	padding: 17px;
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -21,6 +21,11 @@ html, body{
 	font-size: small;
 	color: white;
 	background-color: #19375a;
+	z-index: 1000;
+}
+
+#footer-corner{
+	display: hidden;
 }
 
 /*#footer:before {
@@ -34,16 +39,19 @@ html, body{
 
 @media only screen and (min-width:500px){
 	#footer{
-		width: 250px;
+		width: 200px;
 	}
-	#footer:after{
+	#footer-corner{
 	  content: '';
-	  position: absolute;
-	  top: 0;
-	  right: 0;
-	  border-top: 40px solid #eee;
-	  border-left: 40px solid #19375a;
-	
+	  position: fixed;
+	  bottom: 0;
+	  left: 200px;
+	  display: block;
+	  height: 50px;
+	  width: 50px;
+	  background-color: transparent;
+	  background-image: url(../img/corner.png);	
+	  z-index: 1000;
 	}
 }
 
