@@ -1,0 +1,30 @@
+<div id="login" layout:decorator="layouts/default" layout:fragment="content">
+
+	<div th:if="${param.error}">
+        <div class="alert alert-danger">
+            Invalid username and password.
+        </div>
+    </div>
+    <div th:if="${param.logout}">
+        <div class="alert alert-info">
+            You have been logged out.
+        </div>
+    </div>
+	
+	<h2 th:text="#{login.title}">Authentification</h2>
+	
+	<form method="POST" action="/login">
+	
+	  <div class="form-group">
+	    <input autofocus="autofocus" maxlength="50" type="text" class="form-control" name="username" required="required" th:value="${login}" placeholder="Login"/>
+	  </div>
+	  
+	  <div class="form-group">
+	    <input maxlength="50" type="password" class="form-control" name="password" required="required" placeholder="Password"/>
+	  </div>
+	  
+	  <button type="submit" class="btn btn-primary" th:text="#{login.submit}">Login</button>
+	  
+	</form>
+
+</div>
