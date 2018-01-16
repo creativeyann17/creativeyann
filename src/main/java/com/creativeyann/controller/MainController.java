@@ -34,5 +34,11 @@ public class MainController {
 		model.addAttribute("currentPage", "contact");
 		return "contact";
 	}
+	
+	@GetMapping("/login")
+	public String login(Model model) {
+		model.addAttribute("currentPage", "login");
+		return "login";
+	}
 
 }
