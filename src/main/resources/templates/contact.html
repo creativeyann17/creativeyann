@@ -1,3 +1,44 @@
 <div layout:decorator="layouts/default" layout:fragment="content">
-<h1 th:text="#{wip}"></h1>   
+
+<script>
+	function updateCounter(textAera){
+		var counter=document.getElementById("contactCounter");
+		var max=textAera.getAttribute('maxlength');
+		var count=textAera.value.length;
+		var diff=max-count;
+		counter.innerHTML=diff+"/"+max;
+	}
+</script>
+
+<div th:if="${success}" th:text="${success}" class="alert alert-success" role="alert"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+<div th:if="${antispam}" th:text="${antispam}" class="alert alert-warning" role="alert"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></div>
+<div th:if="${error}" th:text="${error}" class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+<ul>
+   <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li> 
+</ul>
+</div>
+
+<h2 th:text="#{contact.title}"></h2>
+
+<form action="#" th:action="@{/messageForm}" th:object="${messageForm}" onsubmit="return doContactValidation(this)" method="POST">
+  <div class="form-group">
+    <label th:text="#{contact.subject}" for="subject"></label>
+	<span th:if="${#fields.hasErrors('subject')}" class="red" th:errors="*{subject}"></span>
+    <input autofocus="autofocus" maxlength="50" type="text" class="form-control" th:field="*{subject}" id="subject" th:placeholder="#{contact.subject.default}" required="required" th:value="${messageForm?.subject}"/>
+  </div>
+  <div class="form-group">
+    <label th:text="#{contact.email}" for="email"></label>
+    <span th:if="${#fields.hasErrors('email')}" class="red" th:errors="*{email}"></span>
+    <input maxlength="50" type="email" class="form-control" th:field="*{email}" id="email" th:placeholder="#{contact.email.default}" required="required" th:value="${messageForm?.email}"/>
+  </div>
+  <div class="form-group">
+    <label th:text="#{contact.message}" for="message"></label>
+    <span th:if="${#fields.hasErrors('content')}" class="red" th:errors="*{content}"></span>
+    &nbsp;<span id="contactCounter"></span><br/>
+    <textarea class="form-control" id="message" rows="10" spellcheck="true" maxlength="1000" th:field="*{content}" onkeyup="updateCounter(this)" th:placeholder="#{contact.message.default}" required="required" th:text="${messageForm?.content}"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary" th:text="#{contact.submit}"></button>
+</form>
+
+ 
 </div>

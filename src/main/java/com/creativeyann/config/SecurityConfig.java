@@ -13,6 +13,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	@Value("${login.password:$2a$10$Z4fX30s6Utdad1pG2yF3/ugOq5KewyVNWtQ/ohtBr3PiH7kUJ3nOq}")
+	private String loginPassword;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -23,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					//.antMatchers("/", "/resume", "/projects", "/contact").permitAll()
 					//.antMatchers("/css/**","/img/**","/resumes/**").permitAll()
 					.antMatchers("/admin/**").hasAnyRole("ADMIN")
+					.antMatchers("/console/**").hasAnyRole("ADMIN")
 					//.anyRequest().authenticated()
 					.anyRequest().permitAll()
                 .and()
@@ -41,9 +45,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
        
     }
     
-    @Value("${login.password}")
-    private String password;
-    
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -52,6 +53,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().passwordEncoder(passwordEncoder())
-                .withUser("admin").password(password).roles("ADMIN");
+                .withUser("admin").password(loginPassword).roles("ADMIN");
     }
 }
