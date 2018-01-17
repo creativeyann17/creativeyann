@@ -13,9 +13,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.servlet.LocaleResolver;
 
+import com.creativeyann.config.EnvConfig;
 import com.creativeyann.model.Message;
 import com.creativeyann.service.MessageService;
 
@@ -29,6 +28,9 @@ public class MainController {
 	
 	@Autowired
 	private MessageService messageService;
+	
+	@Autowired
+	private EnvConfig envConfig;
 	
 	@Value("${spring.application.name}")
 	private String appName;
@@ -64,7 +66,7 @@ public class MainController {
 		
 		boolean antiSpam = false;
 		Long lastMessage = (Long)request.getSession().getAttribute("lastMessage");
-		if(lastMessage != null) {
+		if(!envConfig.isActiveProfile("dev") && lastMessage != null) {
 			antiSpam = (System.currentTimeMillis() - lastMessage) < POST_MESSAGE_ANTI_SPAM;
 		}
 		

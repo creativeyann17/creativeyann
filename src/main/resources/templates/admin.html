@@ -1,3 +1,22 @@
 <div layout:decorator="layouts/default" layout:fragment="content">
-	<h1 th:text="${messages}"></h1>
+
+	<h2>Messages</h2>
+	<form method="post" action="/admin/msgActions">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Subject</th><th>Email</th><th>Date</th><th>Content</th><th><input class="btn btn-danger btn-sm" type="submit"/></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="msg : ${messages}" class="active">
+					<td th:text="${msg.subject}"></td><td th:text="${msg.email}"></td><td th:text="${msg.date}"></td><td th:text="${msg.content}"></td>
+					<td>
+						<label>Remove <input type="checkbox" name="remove" th:value="${msg.id}"/></label>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+	
 </div>
