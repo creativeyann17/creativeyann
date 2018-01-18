@@ -35,9 +35,13 @@ public class MainController {
 	@Value("${spring.application.name}")
 	private String appName;
 	
+	@Value("${lastUpdate}")
+	private String lastUpdate;
+	
 	@GetMapping("/")
 	public String index(Model model) {
 		model.addAttribute("currentPage", "index");
+		model.addAttribute("lastUpdate", lastUpdate);
 		return "index";
 	}
 	
@@ -47,10 +51,10 @@ public class MainController {
 		return "resume";
 	}
 	
-	@GetMapping("/projects")
-	public String projects(Model model) {
-		model.addAttribute("currentPage", "projects");
-		return "projects";
+	@GetMapping("/articles")
+	public String articles(Model model) {
+		model.addAttribute("currentPage", "articles");
+		return "articles";
 	}
 	
 	@GetMapping("/contact")
