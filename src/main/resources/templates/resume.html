@@ -1,18 +1,65 @@
 <div layout:decorator="layouts/default" layout:fragment="content">
-	<script>
-	function resizeIframe(iframe) {
-	  	iframe.style.height = (iframe.contentWindow.document.body.scrollHeight ) + "px";
-	}  
-	</script>
-	<div class="row utils">
-	
-		<p th:if="__${#locale}__ == 'fr'"><a data-toggle="tooltip" data-placement="right" th:title="#{resume.download}" href="./resumes/FR.html" download="Yann_MARCOU_FR.html"><span class="glyphicon glyphicon-download-alt"></span></a></p>
-		<p th:if="__${#locale}__ == 'en'"><a data-toggle="tooltip" data-placement="right" th:title="#{resume.download}" href="./resumes/EN.html" download="Yann_MARCOU_EN.html"><span class="glyphicon glyphicon-download-alt"></span></a></p>
-		
-		<p th:if="__${#locale}__ == 'fr'"><a data-toggle="tooltip" data-placement="right" th:title="#{resume.open}" target="_blank" href="./resumes/FR.html"><span class="glyphicon glyphicon-share-alt"></span></a></p>
-		<p th:if="__${#locale}__ == 'en'"><a data-toggle="tooltip" data-placement="right" th:title="#{resume.open}" target="_blank" href="./resumes/EN.html"><span class="glyphicon glyphicon-share-alt"></span></a></p>
-		
-	</div>
-	<iframe th:if="__${#locale}__ == 'fr'" scrolling="no" class="resume" src="./resumes/FR.html" onload="resizeIframe(this)"></iframe>
-	<iframe th:if="__${#locale}__ == 'en'" scrolling="no" class="resume" src="./resumes/EN.html" onload="resizeIframe(this)"></iframe>
+  <script>
+    function resizeIframe(iframe) {
+      iframe.style.height =
+        iframe.contentWindow.document.body.scrollHeight + "px";
+    }
+  </script>
+  <div class="row utils">
+    <p th:if="__${#locale}__ == 'fr'">
+      <a
+        data-toggle="tooltip"
+        data-placement="right"
+        th:title="#{resume.download}"
+        href="./resumes/FR.html"
+        download="Yann___FR.html"
+        ><span class="glyphicon glyphicon-download-alt"></span
+      ></a>
+    </p>
+    <p th:if="__${#locale}__ == 'en'">
+      <a
+        data-toggle="tooltip"
+        data-placement="right"
+        th:title="#{resume.download}"
+        href="./resumes/EN.html"
+        download="Yann___EN.html"
+        ><span class="glyphicon glyphicon-download-alt"></span
+      ></a>
+    </p>
+
+    <p th:if="__${#locale}__ == 'fr'">
+      <a
+        data-toggle="tooltip"
+        data-placement="right"
+        th:title="#{resume.open}"
+        target="_blank"
+        href="./resumes/FR.html"
+        ><span class="glyphicon glyphicon-share-alt"></span
+      ></a>
+    </p>
+    <p th:if="__${#locale}__ == 'en'">
+      <a
+        data-toggle="tooltip"
+        data-placement="right"
+        th:title="#{resume.open}"
+        target="_blank"
+        href="./resumes/EN.html"
+        ><span class="glyphicon glyphicon-share-alt"></span
+      ></a>
+    </p>
+  </div>
+  <iframe
+    th:if="__${#locale}__ == 'fr'"
+    scrolling="no"
+    class="resume"
+    src="./resumes/FR.html"
+    onload="resizeIframe(this)"
+  ></iframe>
+  <iframe
+    th:if="__${#locale}__ == 'en'"
+    scrolling="no"
+    class="resume"
+    src="./resumes/EN.html"
+    onload="resizeIframe(this)"
+  ></iframe>
 </div>
